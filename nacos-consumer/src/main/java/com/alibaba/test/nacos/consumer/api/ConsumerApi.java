@@ -1,8 +1,11 @@
 package com.alibaba.test.nacos.consumer.api;
 
-import com.alibaba.test.nacos.discovery.api.ProviderApi;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(name = "nacos-provider")
-public interface ConsumerApi extends ProviderApi {
+public interface ConsumerApi {
+    @RequestMapping(value = "/echo", method = RequestMethod.GET)
+    String echo();
 }
